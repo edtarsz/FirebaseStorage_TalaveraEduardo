@@ -32,13 +32,26 @@
         android:layout_marginTop="30dp"
         android:hint="Nombre del pokemon" />
 
-    <Button
-        android:id="@+id/btnSubirImagen"
-        android:layout_width="145dp"
-        android:layout_height="55dp"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginTop="25dp"
-        android:text="Subir imagen" />
+        android:layout_marginVertical="40dp" />
+
+    <Button
+        android:id="@+id/btnSubirImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Seleccionar imágen" />
+
+    <Button
+        android:id="@+id/btnSavePokemon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Registrar pokemon" />
 
 
 </LinearLayout>
