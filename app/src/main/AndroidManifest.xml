@@ -25,5 +25,4 @@
             android:name=".RegistrarPokemon"
             android:exported="false" />
     </application>
-
 </manifest>

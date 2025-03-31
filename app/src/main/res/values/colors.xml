@@ -14,4 +14,6 @@
 
     <color name="red_wine">#8D1E1C</color>
     <color name="blue_cool">#36BBD2</color>
+
+    <color name="background">#F2EFE9</color>
 </resources>

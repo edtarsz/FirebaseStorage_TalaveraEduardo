@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:orientation="vertical"
     tools:context=".RegistrarPokemon">
 
@@ -29,8 +30,10 @@
         android:layout_height="55dp"
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="30dp"
+        android:background="@drawable/border_radius"
         android:fontFamily="sans-serif"
-        android:hint="Numero del pokemon" />
+        android:hint="Numero del pokemon"
+        android:paddingHorizontal="20dp" />
 
     <EditText
         android:id="@+id/etName"
@@ -38,13 +41,15 @@
         android:layout_height="55dp"
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="30dp"
+        android:background="@drawable/border_radius"
         android:fontFamily="sans-serif"
-        android:hint="Nombre del pokemon" />
+        android:hint="Nombre del pokemon"
+        android:paddingHorizontal="20dp" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginVertical="40dp" />
 

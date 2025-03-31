@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var listView: ListView
     private lateinit var database: DatabaseReference
     private lateinit var adapter: PokemonAdapter
-    private val pokemonList = mutableListOf<Pokemon>()
+    private val pokemonList = ArrayList<Pokemon>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         cargarPokemones()
     }
 
+    // Esto se ejecuta cada que se carga la pantalla
+    // Es para cuando se sube la imagen y se redirecciona al main, que se vuelva a cargar la lista
     override fun onResume() {
         super.onResume()
         cargarPokemones()
@@ -47,9 +49,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun cargarPokemones() {
         database.addValueEventListener(object : ValueEventListener {
+
+            // El snapshot son los datos de un nodo en el firebase
             override fun onDataChange(snapshot: DataSnapshot) {
+                // Limpiar la lista antes de agregar nuevos datos, para que no se sobrepponga una lista sobre la otra
                 pokemonList.clear()
 
+                // Itera sobre los pokemones
                 for (pokemonSnapshot in snapshot.children) {
                     val pokemon = pokemonSnapshot.getValue(Pokemon::class.java)
                     if (pokemon != null) {
@@ -57,11 +63,12 @@ class MainActivity : AppCompatActivity() {
                         Log.d("MainActivity", "Pokémon encontrado: ${pokemon.name}")
                     }
                 }
+
+                // Esto notifica al adaptador que se cambiaron los datos
                 adapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Mejora el manejo de errores
                 Log.e("MainActivity", "Error al cargar datos: ${error.message}")
             }
         })
