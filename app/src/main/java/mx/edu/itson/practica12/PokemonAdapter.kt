@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 
-
+// Eduardo Talavera Ramos 31/03/2025
 class PokemonAdapter(context: Context, private val pokemonList: MutableList<Pokemon>) :
     ArrayAdapter<Pokemon>(context, 0, pokemonList) {
 

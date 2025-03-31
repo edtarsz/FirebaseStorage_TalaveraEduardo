@@ -2,6 +2,7 @@ package mx.edu.itson.practica12
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+// Eduardo Talavera Ramos 31/03/2025
 class MainActivity : AppCompatActivity() {
     private lateinit var listView: ListView
     private lateinit var database: DatabaseReference
@@ -35,29 +37,32 @@ class MainActivity : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance().reference.child("pokemons")
 
-        fetchPokemons()  // Cargar los Pokémon al iniciar la actividad
+        cargarPokemones()
     }
 
     override fun onResume() {
         super.onResume()
-        fetchPokemons()  // Recargar los Pokémon cuando volvemos desde RegisterActivity
+        cargarPokemones()
     }
 
-    private fun fetchPokemons() {
+    private fun cargarPokemones() {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 pokemonList.clear()
+
                 for (pokemonSnapshot in snapshot.children) {
                     val pokemon = pokemonSnapshot.getValue(Pokemon::class.java)
                     if (pokemon != null) {
                         pokemonList.add(pokemon)
+                        Log.d("MainActivity", "Pokémon encontrado: ${pokemon.name}")
                     }
                 }
                 adapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Manejo de error
+                // Mejora el manejo de errores
+                Log.e("MainActivity", "Error al cargar datos: ${error.message}")
             }
         })
     }

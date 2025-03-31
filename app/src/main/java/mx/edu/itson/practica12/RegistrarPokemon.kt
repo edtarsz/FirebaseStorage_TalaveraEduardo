@@ -16,8 +16,8 @@ import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import javax.security.auth.callback.Callback
 
+// Eduardo Talavera Ramos 31/03/2025
 class RegistrarPokemon : AppCompatActivity() {
     val REQUEST_IMAGE_GET = 1
 
@@ -71,13 +71,12 @@ class RegistrarPokemon : AppCompatActivity() {
         }
     }
 
-    fun initCloudinary() {
+    private fun initCloudinary() {
         val config: MutableMap<String, String> = HashMap()
         config["cloud_name"] = CLOUD_NAME
         try {
             MediaManager.init(this, config)
         } catch (e: IllegalStateException) {
-            // Ya estaba inicializado, ignoramos el error
         }
     }
 
@@ -105,23 +104,24 @@ class RegistrarPokemon : AppCompatActivity() {
             MediaManager.get().upload(uri).unsigned(UPLOAD_PRESET)
                 .callback(object : UploadCallback {
                     override fun onStart(requestId: String?) {
-                        Log.i("OnStart", "Subida iniciada")
+                        Log.i("OnStart", "Iniciando subida")
                     }
 
                     override fun onProgress(requestId: String?, bytes: Long, totalBytes: Long) {
-                        Log.i("onProgress", "Subiendo...")
+                        Log.i("onProgress", "Subiendo imagen...")
                     }
 
                     override fun onSuccess(
                         requestId: String?, resultData: MutableMap<Any?, Any?>?
                     ) {
                         imagePublicUrl = resultData?.get("url") as String?
-                        savePokemonToFirebase(imagePublicUrl) // Guardar en Firebase solo después de subir la imagen
+                        savePokemonToFirebase(imagePublicUrl)
                     }
 
                     override fun onError(requestId: String?, error: ErrorInfo?) {
                         Log.e("onError", "Error al subir: ${error.toString()}")
-                        savePokemonToFirebase(null) // Guardar sin imagen si hay error
+                        // Lo guarda sin imagen si ocurre algun error
+                        savePokemonToFirebase(null)
                     }
 
                     override fun onReschedule(requestId: String?, error: ErrorInfo?) {
@@ -136,7 +136,6 @@ class RegistrarPokemon : AppCompatActivity() {
         val numberText = number.text.toString().toIntOrNull()
 
         if (nameText.isNotEmpty() && numberText != null) {
-            // Create Pokemon with the image URL included
             val pokemon = Pokemon(numberText, nameText, imageUrl)
 
             val key = pokemonRef.push().key

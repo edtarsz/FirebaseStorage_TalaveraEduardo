@@ -12,9 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+        android:fontFamily="sans-serif-black"
         android:text="Mi pokedex"
         android:textAlignment="center"
         android:textSize="25sp" />
+
+    <View
+        android:layout_marginVertical="10dp"
+        android:layout_width="360dp"
+        android:layout_height="3dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/black" />
+
 
     <ListView
         android:id="@+id/listView"

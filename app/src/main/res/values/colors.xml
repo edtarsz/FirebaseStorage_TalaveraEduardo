@@ -11,4 +11,7 @@
     <color name="black_200">#aaaaaa</color>
     <color name="black_500">#303231</color>
     <color name="black_700">#FF000000</color>
+
+    <color name="red_wine">#8D1E1C</color>
+    <color name="blue_cool">#36BBD2</color>
 </resources>

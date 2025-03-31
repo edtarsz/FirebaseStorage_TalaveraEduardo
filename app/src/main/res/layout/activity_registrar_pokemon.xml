@@ -12,9 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="25dp"
+        android:fontFamily="sans-serif-black"
         android:text="Agregar Pokemon"
         android:textAlignment="center"
         android:textSize="25sp" />
+
+    <View
+        android:layout_width="360dp"
+        android:layout_height="3dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/black" />
 
     <EditText
         android:id="@+id/etNumber"
@@ -22,6 +29,7 @@
         android:layout_height="55dp"
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif"
         android:hint="Numero del pokemon" />
 
     <EditText
@@ -30,6 +38,7 @@
         android:layout_height="55dp"
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif"
         android:hint="Nombre del pokemon" />
 
     <ImageView
@@ -44,6 +53,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:backgroundTint="@color/blue_cool"
+        android:fontFamily="sans-serif-black"
         android:text="Seleccionar imágen" />
 
     <Button
@@ -51,6 +62,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:backgroundTint="@color/red_wine"
+        android:fontFamily="sans-serif-black"
         android:text="Registrar pokemon" />
 
 
